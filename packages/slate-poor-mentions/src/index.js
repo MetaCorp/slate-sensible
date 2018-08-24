@@ -22,6 +22,7 @@ interface PluginImportOption<T: { name: string }> {
     mentions: Array<T>;
     getText?: string => string;
     matcher?: (string, T) => *;
+    onMentionSelect?: object => *;
 }
 
 function createMentionPlugin<T: { name: string }>(
@@ -89,7 +90,8 @@ function createMentionPlugin<T: { name: string }>(
     );
     const { renderEditor, updater } = createMentionBundle(
         getMentions,
-        MentionItemChild
+        MentionItemChild,
+        options.onMentionSelect
     );
 
     return {

@@ -85,6 +85,8 @@ class MentionMenuContainer<T: { name: string }> extends Component<
 
         const { anchorOffset, focusOffset } = range;
         // TODO: use insertTextAtRange and move delta
+
+        this.props.onMentionSelect && this.props.onMentionSelect(mention)
         return change =>
             change
                 .moveOffsetsTo(anchorOffset, focusOffset)

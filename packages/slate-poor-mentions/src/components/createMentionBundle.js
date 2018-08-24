@@ -12,7 +12,8 @@ const style = { position: 'relative' };
 
 function createMentionBundle<T: { name: string }>(
     getMentions: GetMentions<T>,
-    MentionItemChild: MentionItemChildType<T>
+    MentionItemChild: MentionItemChildType<T>,
+    onMentionSelect: () => *
 ) {
     const updater: InterfaceUpdater = {
         isActive: () => false,
@@ -33,7 +34,8 @@ function createMentionBundle<T: { name: string }>(
                         value,
                         submitChange,
                         getMentions,
-                        MentionItemChild
+                        MentionItemChild,
+                        onMentionSelect
                     }}
                 />
             </div>
